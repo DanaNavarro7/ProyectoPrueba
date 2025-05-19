@@ -11,29 +11,33 @@ public class Principal {
 		// TODO Auto-generated method stub
 
 		Scanner teclado = null;
-		
+
 		long cedula;
 		String carrera;
 		String grado;
 		float salario;
+
+		IngCivil civil = null;
+
+		int menuPrinc, menuPrincIngCivil;
+		//NUEVO CÓDIGO
+		int  numero1=20;
+		int resultado = numero1*20;
+		System.out.println(resultado);
 		
-		IngCivil civil= null;
-		IngInf info= null;
-		
-		int menuPrinc, menuPrincIngCivil, menuPrincIngInfo;
 		ImplementacionIngCivil impCivil = new ImplementacionIngCivil();
-		
+
 		do {
 			System.out.println("MENU PRINCIPAL");
 			System.out.println("1---CRUD DE ING. CIVIL");
 			System.out.println("2---CRUD DE ING. INFORMATICA");
 			System.out.println("3---SALIR");
-			
-			teclado = new Scanner (System.in);
-			menuPrinc = teclado.nextInt();	
-			
+
+			teclado = new Scanner(System.in);
+			menuPrinc = teclado.nextInt();
+
 			switch (menuPrinc) {
-			case 1://----CRUD ING CIVIL
+			case 1:// ----CRUD ING CIVIL
 				do {
 					System.out.println("CRUD ING. CIVIL");
 					System.out.println("1---ALTA");
@@ -42,33 +46,33 @@ public class Principal {
 					System.out.println("4---EDITAR");
 					System.out.println("5---ELIMINAR");
 					System.out.println("6---REGRESAR AL MENU PRINCIPAL");
-					
-					teclado = new Scanner (System.in);
+
+					teclado = new Scanner(System.in);
 					menuPrincIngCivil = teclado.nextInt();
-					
+
 					switch (menuPrincIngCivil) {
 					case 1:
 						try {
 							System.out.println("Ingresa numero de cedula");
-							teclado = new Scanner (System.in);
+							teclado = new Scanner(System.in);
 							cedula = teclado.nextLong();
-							
+
 							System.out.println("Ingresa la carrera");
-							teclado = new Scanner (System.in);
+							teclado = new Scanner(System.in);
 							carrera = teclado.nextLine();
-							
+
 							System.out.println("Ingresa el grado");
-							teclado = new Scanner (System.in);
+							teclado = new Scanner(System.in);
 							grado = teclado.nextLine();
-							
+
 							System.out.println("Ingresa el salario");
-							teclado = new Scanner (System.in);
+							teclado = new Scanner(System.in);
 							salario = teclado.nextFloat();
-							
-							//CREAR EL OBJETO
+
+							// CREAR EL OBJETO
 							civil = new IngCivil(cedula, carrera, grado, salario);
-							
-							//AGREGAR AL HASHMAP
+
+							// AGREGAR AL HASHMAP
 							impCivil.guardar(civil);
 							System.out.println("Se guardó");
 						} catch (Exception e) {
@@ -80,7 +84,7 @@ public class Principal {
 					case 2:
 						impCivil.mostrar();
 						break;
-						
+
 					case 3:
 						try {
 
@@ -98,7 +102,7 @@ public class Principal {
 						}
 						break;
 					case 4:
-						
+
 						try {
 
 							System.out.println("Ingrese el número de cedula");
@@ -131,11 +135,11 @@ public class Principal {
 							System.out.println("Ingrese el numero de cedula a eliminar");
 							teclado = new Scanner(System.in);
 							cedula = teclado.nextLong();
-							
+
 							// ELIMINAR
 							impCivil.eliminar(cedula);
 							System.out.println("Se ha eliminado correctamente");
-							
+
 						} catch (Exception e) {
 							// TODO: handle exception
 							System.out.println("No se ha podido eliminar. Intente de nuevo");
@@ -144,23 +148,21 @@ public class Principal {
 					case 6:
 						break;
 					}
-					
-				} while (menuPrincIngCivil <6);
-				
+
+				} while (menuPrincIngCivil < 6);
+
 				break;
 
-			case 2://-----CRUD ING INFORMATICA
-				
-				
+			case 2:// -----CRUD ING INFORMATICA
+
 				break;
-				
+
 			case 3:
 				break;
 			}
-			
-			
-		} while (menuPrinc <4);
-		
+
+		} while (menuPrinc < 4);
+
 	}
 
 }
